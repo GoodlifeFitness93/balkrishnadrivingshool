@@ -1,1 +1,0 @@
-const s="/assets/course-two-wheeler-v_eHGsGY.jpg",e="/assets/course-four-wheeler-_fuEvyYE.jpg",o="/assets/course-auto-DCw74kAm.jpg",r="/assets/course-truck-F1_pxUpQ.jpg",c="/assets/course-tempo-B22xMVaE.jpg",t="/assets/course-refresher-DR8wBmcr.jpg",a="/assets/course-license-BTREbsBu.jpg";export{e as a,o as b,r as c,c as d,t as e,a as f,s as i};
