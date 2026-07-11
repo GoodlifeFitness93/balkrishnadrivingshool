@@ -12,4 +12,25 @@ export default defineConfig({
     // nitro/vite builds from this
     server: { entry: "server" },
   },
+  vite: {
+    plugins: [
+      {
+        name: 'admin-routing-middleware',
+        configureServer(server) {
+          server.middlewares.use((req, res, next) => {
+            if (req.url) {
+              const url = new URL(req.url, 'http://localhost');
+              const path = url.pathname;
+              if (path === '/admin') {
+                req.url = '/admin/index.html' + url.search;
+              } else if (path === '/admin/login') {
+                req.url = '/admin/login.html' + url.search;
+              }
+            }
+            next();
+          });
+        }
+      }
+    ]
+  }
 });

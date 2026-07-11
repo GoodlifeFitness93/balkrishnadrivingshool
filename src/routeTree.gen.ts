@@ -16,9 +16,7 @@ import { Route as CoursesRouteImport } from './routes/courses'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
-import { Route as AdminIndexRouteImport } from './routes/admin/index'
 import { Route as ApiAdminConfigDotjsRouteImport } from './routes/api/admin-config[.]js'
-import { Route as AdminLoginRouteImport } from './routes/admin/login'
 
 const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
   id: '/sitemap.xml',
@@ -55,19 +53,9 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
-const AdminIndexRoute = AdminIndexRouteImport.update({
-  id: '/admin/',
-  path: '/admin/',
-  getParentRoute: () => rootRouteImport,
-} as any)
 const ApiAdminConfigDotjsRoute = ApiAdminConfigDotjsRouteImport.update({
   id: '/api/admin-config.js',
   path: '/api/admin-config.js',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const AdminLoginRoute = AdminLoginRouteImport.update({
-  id: '/admin/login',
-  path: '/admin/login',
   getParentRoute: () => rootRouteImport,
 } as any)
 
@@ -79,9 +67,7 @@ export interface FileRoutesByFullPath {
   '/license': typeof LicenseRoute
   '/reviews': typeof ReviewsRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
-  '/admin/login': typeof AdminLoginRoute
   '/api/admin-config.js': typeof ApiAdminConfigDotjsRoute
-  '/admin/': typeof AdminIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -91,9 +77,7 @@ export interface FileRoutesByTo {
   '/license': typeof LicenseRoute
   '/reviews': typeof ReviewsRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
-  '/admin/login': typeof AdminLoginRoute
   '/api/admin-config.js': typeof ApiAdminConfigDotjsRoute
-  '/admin': typeof AdminIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -104,9 +88,7 @@ export interface FileRoutesById {
   '/license': typeof LicenseRoute
   '/reviews': typeof ReviewsRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
-  '/admin/login': typeof AdminLoginRoute
   '/api/admin-config.js': typeof ApiAdminConfigDotjsRoute
-  '/admin/': typeof AdminIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -118,9 +100,7 @@ export interface FileRouteTypes {
     | '/license'
     | '/reviews'
     | '/sitemap.xml'
-    | '/admin/login'
     | '/api/admin-config.js'
-    | '/admin/'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -130,9 +110,7 @@ export interface FileRouteTypes {
     | '/license'
     | '/reviews'
     | '/sitemap.xml'
-    | '/admin/login'
     | '/api/admin-config.js'
-    | '/admin'
   id:
     | '__root__'
     | '/'
@@ -142,9 +120,7 @@ export interface FileRouteTypes {
     | '/license'
     | '/reviews'
     | '/sitemap.xml'
-    | '/admin/login'
     | '/api/admin-config.js'
-    | '/admin/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -155,9 +131,7 @@ export interface RootRouteChildren {
   LicenseRoute: typeof LicenseRoute
   ReviewsRoute: typeof ReviewsRoute
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
-  AdminLoginRoute: typeof AdminLoginRoute
   ApiAdminConfigDotjsRoute: typeof ApiAdminConfigDotjsRoute
-  AdminIndexRoute: typeof AdminIndexRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -211,25 +185,11 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/admin/': {
-      id: '/admin/'
-      path: '/admin'
-      fullPath: '/admin/'
-      preLoaderRoute: typeof AdminIndexRouteImport
-      parentRoute: typeof rootRouteImport
-    }
     '/api/admin-config.js': {
       id: '/api/admin-config.js'
       path: '/api/admin-config.js'
       fullPath: '/api/admin-config.js'
       preLoaderRoute: typeof ApiAdminConfigDotjsRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/admin/login': {
-      id: '/admin/login'
-      path: '/admin/login'
-      fullPath: '/admin/login'
-      preLoaderRoute: typeof AdminLoginRouteImport
       parentRoute: typeof rootRouteImport
     }
   }
@@ -243,9 +203,7 @@ const rootRouteChildren: RootRouteChildren = {
   LicenseRoute: LicenseRoute,
   ReviewsRoute: ReviewsRoute,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
-  AdminLoginRoute: AdminLoginRoute,
   ApiAdminConfigDotjsRoute: ApiAdminConfigDotjsRoute,
-  AdminIndexRoute: AdminIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
