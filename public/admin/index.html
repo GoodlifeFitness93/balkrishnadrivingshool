@@ -41,6 +41,11 @@
         Balkrishna
         <span>Admin Panel</span>
       </div>
+      <button class="sidebar-collapse-btn" id="sidebar-collapse-btn" aria-label="Collapse Sidebar">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" style="width:16px; height:16px;">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M18.75 19.5l-7.5-7.5 7.5-7.5m-6 15L5.25 12l7.5-7.5" />
+        </svg>
+      </button>
     </div>
 
     <nav class="sidebar-menu">
@@ -120,6 +125,13 @@
       <div class="header-title">
         <h1 id="view-title">Dashboard</h1>
       </div>
+      <div class="header-search-trigger" id="header-search-trigger" role="button" tabindex="0">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" style="width:16px; height:16px; opacity:0.6; margin-right:8px;">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.637 10.637z" />
+        </svg>
+        <span>Search anything...</span>
+        <kbd class="search-kbd">Ctrl K</kbd>
+      </div>
       <div class="header-user">
         <div class="user-avatar" id="user-avatar-initials">A</div>
         <span id="user-email-display">admin@balkrishnadriving.com</span>
@@ -135,6 +147,27 @@
         Loading Dashboard...
       </div>
     </main>
+  </div>
+
+  <!-- Command Palette Modal -->
+  <div class="cmd-palette-backdrop" id="cmd-palette-modal">
+    <div class="cmd-palette-box">
+      <div class="cmd-palette-header">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="cmd-palette-search-icon">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.637 10.637z" />
+        </svg>
+        <input type="text" id="cmd-palette-input" placeholder="Type a command or search trainees..." autocomplete="off">
+        <span class="cmd-palette-esc-badge">ESC</span>
+      </div>
+      <div class="cmd-palette-body" id="cmd-palette-results">
+        <!-- Results rendered dynamically -->
+      </div>
+      <div class="cmd-palette-footer">
+        <span><kbd>↑↓</kbd> navigate</span>
+        <span><kbd>Enter</kbd> select</span>
+        <span><kbd>Esc</kbd> close</span>
+      </div>
+    </div>
   </div>
 
   <!-- Dynamic Views Modals / Forms Container -->
