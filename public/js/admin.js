@@ -63,7 +63,9 @@ function initNavigation() {
   // Highlight active link helper
   const updateActiveLink = (hash) => {
     document.querySelectorAll('.menu-link').forEach(link => {
-      if (link.getAttribute('href') === hash) {
+      const href = link.getAttribute('href');
+      // match base route before params
+      if (href && (hash === href || hash.startsWith(href + '?') || hash.startsWith(href + '/'))) {
         link.classList.add('active');
       } else {
         link.classList.remove('active');
@@ -75,6 +77,43 @@ function initNavigation() {
   window.addEventListener('hashchange', () => {
     updateActiveLink(window.location.hash || '#/dashboard');
   });
+
+  // Mobile sidebar drawer controllers
+  const toggleBtn = document.getElementById('sidebar-toggle');
+  const sidebar = document.querySelector('.admin-sidebar');
+  const overlay = document.getElementById('sidebar-overlay');
+
+  if (toggleBtn && sidebar && overlay) {
+    const closeSidebar = () => {
+      sidebar.classList.remove('open');
+      overlay.classList.remove('active');
+      document.body.classList.remove('overflow-hidden');
+    };
+
+    toggleBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      sidebar.classList.toggle('open');
+      overlay.classList.toggle('active');
+      if (sidebar.classList.contains('open')) {
+        document.body.classList.add('overflow-hidden');
+      } else {
+        document.body.classList.remove('overflow-hidden');
+      }
+    });
+
+    overlay.addEventListener('click', closeSidebar);
+
+    // Auto-close on link navigation
+    document.querySelectorAll('.menu-link').forEach(link => {
+      link.addEventListener('click', closeSidebar);
+    });
+    
+    // Auto-close on logout click
+    const logoutBtn = document.getElementById('logout-button');
+    if (logoutBtn) {
+      logoutBtn.addEventListener('click', closeSidebar);
+    }
+  }
 }
 
 // Route Handler
